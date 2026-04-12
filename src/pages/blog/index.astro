@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogEntry from '@/components/BlogEntry.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Blog" description="Technical deep-dives and company updates from Wandersail.">
+  <div class="max-w-content mx-auto px-4 sm:px-6">
+    <div class="pt-10 sm:pt-16 pb-6 sm:pb-8">
+      <h1 class="text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-[var(--color-text-primary)]">Blog</h1>
+      <p class="text-[clamp(0.9rem,1.5vw,1.05rem)] text-[var(--color-text-secondary)] mt-1">Technical deep-dives and company updates.</p>
+    </div>
+    <section class="pb-12 sm:pb-20">
+      <div>
+        {posts.map((post) => (
+          <BlogEntry
+            title={post.data.title}
+            date={post.data.date}
+            category={post.data.category}
+            href={`/blog/${post.slug}`}
+          />
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
