@@ -1,17 +1,54 @@
 ---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import BlogEntry from '@/components/BlogEntry.astro';
+import { projects } from '@/data/projects';
+import { getCollection } from 'astro:content';
 
+const featuredProjects = projects.filter((p) => p.featured);
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Wandersail">
+  <Hero />
+
+  <!-- Featured Projects -->
+  <section class="py-12 sm:py-20">
+    <div class="max-w-content mx-auto px-4 sm:px-6">
+      <div class="mb-8">
+        <h2 class="text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-[var(--color-text-primary)]">Our Projects</h2>
+        <p class="text-[clamp(0.9rem,1.5vw,1.05rem)] text-[var(--color-text-secondary)] mt-1">What we're building and what's on the horizon.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {featuredProjects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Blog Posts -->
+  {posts.length > 0 && (
+    <section class="py-12 sm:py-20">
+      <div class="max-w-content mx-auto px-4 sm:px-6">
+        <div class="mb-8">
+          <h2 class="text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-[var(--color-text-primary)]">From the Blog</h2>
+        </div>
+        <div>
+          {posts.map((post) => (
+            <BlogEntry
+              title={post.data.title}
+              date={post.data.date}
+              category={post.data.category}
+              href={`/blog/${post.slug}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
