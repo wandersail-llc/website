@@ -1,0 +1,42 @@
+---
+const socialLinks = [
+  { name: 'GitHub', href: 'https://github.com/wandersail' },
+  { name: 'Twitter', href: 'https://twitter.com/wandersail' },
+  { name: 'LinkedIn', href: 'https://linkedin.com/company/wandersail' },
+];
+---
+
+<footer class="border-t border-border mt-auto">
+  <div class="max-w-content mx-auto px-4 sm:px-6">
+    <!-- Newsletter -->
+    <div class="py-12 sm:py-16 text-center">
+      <h3 class="text-lg font-semibold text-[var(--color-text-primary)] mb-1">Stay in the loop</h3>
+      <p class="text-sm text-[var(--color-text-secondary)] mb-4">Get updates on new projects and posts.</p>
+      <form class="flex gap-2 max-w-sm mx-auto flex-col sm:flex-row" action="https://buttondown.com/api/emails/wandersail" method="post">
+        <input
+          type="email"
+          name="email"
+          placeholder="your@email.com"
+          required
+          class="flex-1 px-3 py-2.5 text-sm font-sans bg-[var(--color-bg)] border border-border rounded-md text-[var(--color-text-primary)] focus:outline-none focus:border-accent"
+        />
+        <button type="submit" class="px-5 py-2.5 bg-accent text-white text-sm font-medium rounded-md hover:bg-[var(--color-accent-hover)] transition-colors">
+          Subscribe
+        </button>
+      </form>
+    </div>
+    <!-- Bottom bar -->
+    <div class="flex justify-between items-center py-6 border-t border-border text-xs text-[var(--color-text-muted)]">
+      <span>&copy; {new Date().getFullYear()} Wandersail LLC</span>
+      <ul class="flex gap-4 list-none m-0 p-0">
+        {socialLinks.map((link) => (
+          <li>
+            <a href={link.href} target="_blank" rel="noopener" class="text-[var(--color-text-muted)] no-underline hover:text-accent">
+              {link.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>
