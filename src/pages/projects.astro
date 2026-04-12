@@ -1,0 +1,28 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import { projects } from '@/data/projects';
+---
+
+<BaseLayout title="Projects" description="What Wandersail is building and what's on the horizon.">
+  <div class="max-w-content mx-auto px-4 sm:px-6">
+    <div class="pt-10 sm:pt-16 pb-6 sm:pb-8">
+      <h1 class="text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-[var(--color-text-primary)]">Projects</h1>
+      <p class="text-[clamp(0.9rem,1.5vw,1.05rem)] text-[var(--color-text-secondary)] mt-1">What we're building and what's on the horizon.</p>
+    </div>
+    <section class="pb-12 sm:pb-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+        <!-- Placeholder card -->
+        <div class="border border-dashed border-border rounded-xl p-6 flex items-center justify-center min-h-[160px] text-[var(--color-text-muted)] text-center">
+          <div>
+            <div class="text-2xl mb-1">+</div>
+            <div class="text-xs">More projects on the way</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
