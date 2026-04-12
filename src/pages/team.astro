@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TeamCard from '@/components/TeamCard.astro';
+import { team } from '@/data/team';
+---
+
+<BaseLayout title="Team" description="The people behind Wandersail.">
+  <div class="max-w-content mx-auto px-4 sm:px-6">
+    <div class="pt-10 sm:pt-16 pb-6 sm:pb-8">
+      <h1 class="text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-[var(--color-text-primary)]">Team</h1>
+      <p class="text-[clamp(0.9rem,1.5vw,1.05rem)] text-[var(--color-text-secondary)] mt-1">The people behind Wandersail.</p>
+    </div>
+    <section class="pb-12 sm:pb-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {team.map((member) => (
+          <TeamCard member={member} />
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
