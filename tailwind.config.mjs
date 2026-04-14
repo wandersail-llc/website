@@ -7,20 +7,11 @@ export default {
       colors: {
         surface: 'var(--color-surface)',
         border: 'var(--color-border)',
-        accent: {
-          DEFAULT: 'var(--color-accent)',
-          hover: 'var(--color-accent-hover)',
-          bg: 'var(--color-accent-bg)',
-        },
-        badge: {
-          'active-bg': 'var(--color-badge-active-bg)',
-          'active-text': 'var(--color-badge-active-text)',
-          'soon-bg': 'var(--color-badge-soon-bg)',
-          'soon-text': 'var(--color-badge-soon-text)',
-        },
+        rule: 'var(--color-rule)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['"Newsreader"', 'Georgia', 'serif'],
       },
       maxWidth: {
         content: '1100px',

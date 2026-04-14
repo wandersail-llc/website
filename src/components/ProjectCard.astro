@@ -9,22 +9,22 @@ const { project } = Astro.props;
 const isSoon = project.status === 'coming_soon';
 ---
 
-<div class:list={['bg-surface border border-border rounded-xl p-6', isSoon && 'opacity-70']}>
-  <div class="flex justify-between items-start mb-2">
-    <span class="text-base font-semibold text-[var(--color-text-primary)]">{project.name}</span>
-    {isSoon ? (
-      <span class="text-[0.65rem] px-2 py-0.5 rounded bg-badge-soon-bg text-badge-soon-text font-medium whitespace-nowrap">Coming Soon</span>
-    ) : (
-      <span class="text-[0.65rem] px-2 py-0.5 rounded bg-badge-active-bg text-badge-active-text font-medium whitespace-nowrap">Active</span>
-    )}
-  </div>
-  <span class="inline-block text-[0.7rem] px-2 py-0.5 rounded bg-accent-bg text-accent mb-2">{project.category}</span>
+<div class:list={['p-6 hover:bg-surface transition-colors', isSoon && 'opacity-70']}>
+  <span class="block text-[0.65rem] uppercase tracking-widest text-[var(--color-text-muted)] mb-2">{project.category}</span>
+  <h3 class="font-serif text-lg text-[var(--color-text-primary)] mb-2">{project.name}</h3>
   <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-3">{project.description}</p>
-  {project.url && !isSoon ? (
-    <a href={project.url} target="_blank" rel="noopener" class="text-sm font-medium text-accent no-underline hover:text-[var(--color-accent-hover)]">
-      View project →
-    </a>
-  ) : (
-    <span class="text-sm text-[var(--color-text-muted)]">Coming soon</span>
-  )}
+  <div class="flex items-center justify-between">
+    <span class="flex items-center gap-1.5 text-xs text-[var(--color-text-muted)]">
+      <span class:list={[
+        'inline-block w-1.5 h-1.5 rounded-full',
+        isSoon ? 'bg-[var(--color-status-soon)]' : 'bg-[var(--color-status-active)]',
+      ]}></span>
+      {isSoon ? 'Coming Soon' : 'Active'}
+    </span>
+    {project.url && !isSoon ? (
+      <a href={project.url} target="_blank" rel="noopener" class="text-sm text-[var(--color-text-secondary)] no-underline hover:border-b hover:border-[var(--color-text-secondary)]">
+        Visit →
+      </a>
+    ) : null}
+  </div>
 </div>

@@ -17,15 +17,14 @@ const posts = (await getCollection('blog'))
   <Hero />
 
   <!-- Featured Projects -->
-  <section class="py-12 sm:py-20">
+  <section class="py-12 sm:py-20 border-t border-rule">
     <div class="max-w-content mx-auto px-4 sm:px-6">
-      <div class="mb-8">
-        <h2 class="text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-[var(--color-text-primary)]">Our Projects</h2>
-        <p class="text-[clamp(0.9rem,1.5vw,1.05rem)] text-[var(--color-text-secondary)] mt-1">What we're building and what's on the horizon.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <span class="block text-[0.65rem] uppercase tracking-widest text-[var(--color-text-muted)] mb-8">Projects</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-rule">
         {featuredProjects.map((project) => (
-          <ProjectCard project={project} />
+          <div class="border-b border-r border-rule">
+            <ProjectCard project={project} />
+          </div>
         ))}
       </div>
     </div>
@@ -33,11 +32,9 @@ const posts = (await getCollection('blog'))
 
   <!-- Latest Blog Posts -->
   {posts.length > 0 && (
-    <section class="py-12 sm:py-20">
+    <section class="py-12 sm:py-20 border-t border-rule">
       <div class="max-w-content mx-auto px-4 sm:px-6">
-        <div class="mb-8">
-          <h2 class="text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-[var(--color-text-primary)]">From the Blog</h2>
-        </div>
+        <span class="block text-[0.65rem] uppercase tracking-widest text-[var(--color-text-muted)] mb-8">From the Blog</span>
         <div>
           {posts.map((post) => (
             <BlogEntry

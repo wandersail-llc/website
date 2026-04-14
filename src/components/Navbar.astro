@@ -11,17 +11,17 @@ const navLinks = [
 const pathname = Astro.url.pathname;
 ---
 
-<nav class="sticky top-0 z-50 bg-[var(--color-bg)] border-b border-border">
+<nav class="sticky top-0 z-50 bg-[var(--color-bg)] border-b border-rule">
   <div class="max-w-content mx-auto px-4 sm:px-6 flex justify-between items-center h-16">
-    <a href="/" class="font-bold text-base tracking-wide text-[var(--color-text-primary)] no-underline">
-      WANDERSAIL
+    <a href="/" class="font-serif text-xl italic text-[var(--color-text-primary)] no-underline">
+      Wandersail
     </a>
     <button
       id="nav-toggle"
       class="md:hidden p-2 text-[var(--color-text-primary)]"
       aria-label="Toggle menu"
     >
-      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <line x1="3" y1="6" x2="21" y2="6" />
         <line x1="3" y1="12" x2="21" y2="12" />
         <line x1="3" y1="18" x2="21" y2="18" />
@@ -37,7 +37,7 @@ const pathname = Astro.url.pathname;
               class:list={[
                 'text-sm no-underline transition-colors',
                 isActive
-                  ? 'text-[var(--color-text-primary)] underline underline-offset-[6px] decoration-accent decoration-2'
+                  ? 'text-[var(--color-text-primary)] border-b border-[var(--color-text-primary)] pb-0.5'
                   : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]',
               ]}
             >
@@ -49,7 +49,7 @@ const pathname = Astro.url.pathname;
     </ul>
   </div>
   <!-- Mobile menu -->
-  <ul id="nav-mobile" class="hidden flex-col md:hidden bg-[var(--color-bg)] border-b border-border px-4 pb-4 list-none m-0">
+  <ul id="nav-mobile" class="hidden flex-col md:hidden bg-[var(--color-bg)] border-b border-rule px-4 pb-4 list-none m-0">
     {navLinks.map((link) => {
       const isActive = pathname === link.href || pathname === link.href + '/';
       return (

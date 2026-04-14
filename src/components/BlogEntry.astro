@@ -9,16 +9,14 @@ interface Props {
 const { title, date, category, href } = Astro.props;
 ---
 
-<div class="flex justify-between items-center py-4 border-b border-border last:border-b-0">
+<div class="flex justify-between items-baseline py-4 border-b border-rule last:border-b-0">
   <div>
-    <div class="text-base font-medium text-[var(--color-text-primary)]">
-      <a href={href} class="text-inherit no-underline hover:text-accent">{title}</a>
-    </div>
-    <div class="text-sm text-[var(--color-text-muted)] mt-0.5">
-      {date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-    </div>
+    <a href={href} class="font-serif text-base text-[var(--color-text-primary)] no-underline hover:border-b hover:border-[var(--color-text-primary)]">{title}</a>
+    {category && (
+      <span class="text-[0.65rem] uppercase tracking-widest text-[var(--color-text-muted)] ml-3">{category}</span>
+    )}
   </div>
-  {category && (
-    <span class="text-[0.65rem] px-2 py-0.5 rounded bg-accent-bg text-accent ml-4 shrink-0">{category}</span>
-  )}
+  <time class="text-sm text-[var(--color-text-muted)] ml-4 shrink-0">
+    {date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+  </time>
 </div>

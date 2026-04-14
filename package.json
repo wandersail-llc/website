@@ -15,6 +15,7 @@
     "@astrojs/check": "^0.9.8",
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/tailwind": "^6.0.2",
+    "@fontsource-variable/newsreader": "^5.2.10",
     "@fontsource/inter": "^5.2.8",
     "astro": "^5.18.1",
     "tailwindcss": "^3.4.19",
