@@ -8,27 +8,8 @@ const socialLinks = [
 
 <footer class="border-t border-rule mt-auto">
   <div class="max-w-content mx-auto px-4 sm:px-6">
-    <!-- Newsletter -->
-    <div class="py-12 sm:py-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-      <div>
-        <h3 class="font-serif text-xl sm:text-2xl text-[var(--color-text-primary)] italic">Stay close to the work.</h3>
-        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Get updates on new projects and posts.</p>
-      </div>
-      <form class="flex gap-2 sm:w-auto w-full flex-col sm:flex-row shrink-0" action="https://buttondown.com/api/emails/wandersail" method="post">
-        <input
-          type="email"
-          name="email"
-          placeholder="your@email.com"
-          required
-          class="px-3 py-2.5 text-sm font-sans bg-[var(--color-bg)] border border-rule text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-text-primary)] sm:w-56"
-        />
-        <button type="submit" class="px-5 py-2.5 bg-[var(--color-text-primary)] text-[var(--color-bg)] text-sm font-medium hover:opacity-90 transition-opacity">
-          Subscribe
-        </button>
-      </form>
-    </div>
     <!-- Bottom bar -->
-    <div class="flex justify-between items-center py-6 border-t border-rule text-xs text-[var(--color-text-muted)]">
+    <div class="flex justify-between items-center py-6 text-xs text-[var(--color-text-muted)]">
       <span>&copy; {new Date().getFullYear()} Wandersail LLC</span>
       <ul class="flex gap-4 list-none m-0 p-0">
         {socialLinks.map((link) => (
