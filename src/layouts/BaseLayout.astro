@@ -13,7 +13,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Software, thoughtfully built.' } = Astro.props;
+const { title, description = 'Thoughtful software. Built deliberately.' } = Astro.props;
 const siteTitle = 'Wandersail';
 const pageTitle = title === siteTitle ? siteTitle : `${title} — ${siteTitle}`;
 ---
